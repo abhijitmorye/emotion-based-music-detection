@@ -1,27 +1,23 @@
 import cv2
-import tensorflow as tf
-from tensorflow.keras.models import load_model
-import matplotlib.pyplot as plt
 import numpy as np
 import PIL
 import tensorflow as tf
-from tensorflow.keras.preprocessing import image
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPool2D
 import webbrowser
 import streamlit as st
 
 
-##
+# StreamLit Initialization
 st.header("Your own's Emotion Based Music Recommender")
 capture = st.checkbox('Capture My Emotion now!')
 FRAME_WINDOW = st.image([])
 captureEmotion = st.button('Capture My Emotion')
 tracks = st.text_input(
     'Do you want to listen bollywood songs or western songs')
-# casc_path
+
+
+# casc_path for OpenCV
 casc_path = 'haarcascade_frontalface_default.xml'
 
 # model definition
@@ -47,11 +43,8 @@ model.load_weights('music_recommendation_model.h5')
 emotion_dict = {0: "angry", 1: "fear", 2: "happy",
                 3: "sadness", 4: "surprise", 5: "neutral"}
 
-# OAuth Bearer Tokeni
 
-authToken = 'BQBwAnjmaJRVHNAfxXfByXXRbGFD4FdjMAvzJdSeMp-bxKgYNCmDX2ONFvzACmb6LEAEk-qLoAFqBZM2ohfUokNYrS4ts13MWWTfLOdDbVrCNq6H4gniGPct_3CICYSa_HYwLH39oNBGCQAwM2n87LeUSlj9SQQFG-FnpC_Qnbv3JKMOAjMPwSFsYr7M-lnnbMQ'
-
-
+# function to capture users's emotion
 def capture_face():
     mood = 'Happy'
     faceCascade = cv2.CascadeClassifier(casc_path)
@@ -92,13 +85,14 @@ def capture_face():
             break
         if captureEmotion:
             # print(captureEmotion)
-            predictSongs(mood)
+            recommendSongs(mood)
             break
     cap.release()
     cv2.destroyAllWindows()
 
 
-def predictSongs(userMood):
+# function to recommendSongs
+def recommendSongs(userMood):
     webbrowser.open(
         f"https://www.youtube.com/results?search_query=top 10+{tracks}+{userMood}+songs")
 
