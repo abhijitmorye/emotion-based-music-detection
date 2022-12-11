@@ -24,4 +24,4 @@ This will start the streamlit application on the 8051 port.
 ### CNN Model is designed with 4 Convolution layers, 3 Maxpool layers and 3 Fully connected layers. This CNN model has given training accuracy of 82% and validation accuracy of around 50%. We added droput to our model to improve accuracy further and achived test accuracy of 50%.
 
 
-### OpenCV and Streamlit libraries are used to capture facial emotions of user using system's webcam. Once the facial emotions are captured, user can click on "Recommend Me a song" to retirve the list of Youtube audio/videos of emotion based songs. Users alos have options to provide which type of songs they want to listen, e.g. Bollywood, Western etc.
+### OpenCV and Streamlit libraries are used to capture facial emotions of user using system's webcam. Once the facial emotions are captured, user can click on "Recommend Me a song" to get the list of recommended Youtube audio/videos of emotion based songs. Users alos have options to provide which type of songs they want to listen, e.g. Bollywood, Western etc.
